@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/tbnnrdt/donnaBot#readme",
   "dependencies": {
+    "express": "^4.15.3",
     "messenger-bot": "^2.4.0"
   }
 }
