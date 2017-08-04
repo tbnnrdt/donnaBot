@@ -7,12 +7,12 @@ const FB_TOKEN = process.env.FB_TOKEN
 const FB_VERIFY = process.env.FB_VERIFY
 
 let bot = new Bot({
-   token: PAGE_TOKEN,
-   verify: VERIFY_TOKEN
+    token: FB_TOKEN,
+    verify: FB_VERIFY
 })
 
-bot.on('error', function(err){
-   console.log(err.message)
+bot.on('error', (err) => {
+    console.log(err.message)
 })
 
 bot.on('message', (payload, reply) => {
@@ -27,6 +27,5 @@ bot.on('message', (payload, reply) => {
         console.log(`Echoed back : ${text}`)
     })
 })
-
 http.createServer(bot.middleware()).listen(process.env.PORT)
 console.log('Server is running.')
