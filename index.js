@@ -16,16 +16,17 @@ bot.on('error', (err) => {
 })
 
 bot.on('message', (payload, reply) => {
-    let text = payload.message.text
-    reply({
-        text
-    }, (err) => {
-        if (err) {
-            console.log(err.message)
-        }
+  let text = payload.message.text
 
-        console.log(`Echoed back : ${text}`)
+  bot.getProfile(payload.sender.id, (err, profile) => {
+    if (err) throw err
+
+    reply({ text }, (err) => {
+      if (err) throw err
+
+      console.log(`Echoed back to ${profile.first_name} ${profile.last_name}: ${text}`)
     })
+  })
 })
 http.createServer(bot.middleware()).listen(process.env.PORT)
 console.log('Server is running.')
