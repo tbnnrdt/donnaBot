@@ -1,16 +1,19 @@
 {
-  "name": "Donna Bot",
+  "name": "donnabot-fb",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "My Personnal Assistant",
+  "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Thomas BONNARDOT",
+  "license": "HEI",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4",
-    "request": "^2.71.0"
+    "body-parser": "^1.15.2",
+    "config": "^1.21.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.11.5",
+    "request": "^2.75.0"
   }
 }
