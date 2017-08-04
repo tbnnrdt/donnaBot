@@ -1,32 +1,16 @@
 {
-  "name": "donna_bot",
+  "name": "Donna Bot",
   "version": "1.0.0",
-  "description": "A French Assistant Bot",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tbnnrdt/donnaBot.git"
-  },
-  "keywords": [
-    "donna",
-    "bot",
-    "assistant"
-  ],
-  "author": "Thomas Bonnardot",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tbnnrdt/donnaBot/issues"
-  },
-  "homepage": "https://github.com/tbnnrdt/donnaBot#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "messenger-bot": "^2.4.0",
-    "path": "^0.12.7",
-    "request": "^2.81.0"
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "request": "^2.71.0"
   }
 }
