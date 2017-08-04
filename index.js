@@ -14,7 +14,7 @@ let bot = new Bot({
 bot.on('error', (err) => {
     console.log(err.message)
 })
-
+/*
 bot.on('message', (payload, reply) => {
   let text = payload.message.text
 
@@ -26,9 +26,10 @@ bot.on('message', (payload, reply) => {
       if (err) throw err
 
       console.log(`Echoed back to ${profile.id} - ${profile.first_name} ${profile.last_name}: ${text}`)
-    })*/
+    })
   })
 })
+*/
 bot.hear(['hello', 'hi', /hey( there)?/i], (payload, chat) => {
 	// Send a text message followed by another text message that contains a typing indicator
 	chat.say('Hello, human friend!').then(() => {
