@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/tbnnrdt/donnaBot#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "messenger-bot": "^2.4.0"
+    "messenger-bot": "^2.4.0",
+    "path": "^0.12.7",
+    "request": "^2.81.0"
   }
 }
