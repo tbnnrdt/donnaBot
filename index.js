@@ -128,7 +128,7 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   
-  setTimeout(function(){sendTypingMessage(senderID);},3000);
+  sendTypingMessage(senderID)
 
   if (messageText) {
 
@@ -136,7 +136,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageTextSwitch) {
       case /hey|hello|bonjour|salut|yo/.test(messageTextSwitch) && messageTextSwitch:
-        sendHelloMessage(senderID, messageTextSwitch);
+        setTimeout(sendHelloMessage(senderID, messageTextSwitch),2000);
         break;
 
       case 'generic':
