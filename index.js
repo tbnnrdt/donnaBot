@@ -127,8 +127,9 @@ function receivedMessage(event) {
   var messageTextSwitch = message.text.toLowerCase();
   var messageAttachments = message.attachments;
 
-  sendTypingMessage(senderID);
   
+  setTimeout(function(){sendTypingMessage(senderID);},3000);
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
