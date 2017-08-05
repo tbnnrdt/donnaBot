@@ -83,6 +83,17 @@ function sendHelloMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
+function sendTypingMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    sender_action: 'typing_on'
+  };
+
+  callSendAPI(messageData);
+}
+
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -116,6 +127,8 @@ function receivedMessage(event) {
   var messageTextSwitch = message.text.toLowerCase();
   var messageAttachments = message.attachments;
 
+  sendTypingMessage(senderID);
+  
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
