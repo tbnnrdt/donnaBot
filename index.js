@@ -91,8 +91,8 @@ function sendTypingMessage(recipientId, messageText) {
 
 function sendHelloMessage(recipientId, messageText) {
   sendTypingMessage(recipientId);
-  /*
-  wait(7000);
+  
+  wait(3000);
 
   var messageData = {
     recipient: {
@@ -104,7 +104,6 @@ function sendHelloMessage(recipientId, messageText) {
   };
 
   callSendAPI(messageData);
-  */
 }
 
 function receivedPostback(event) {
