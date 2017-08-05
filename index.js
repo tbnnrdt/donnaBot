@@ -57,6 +57,14 @@ app.post('/webhook', function (req, res) {
   }
 });
 
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
@@ -70,7 +78,22 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
+function sendTypingMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    sender_action: 'typing_on'
+  };
+
+  callSendAPI(messageData);
+}
+
 function sendHelloMessage(recipientId, messageText) {
+  sendTypingMessage(senderID);
+  
+  wait(7000);
+
   var messageData = {
     recipient: {
       id: recipientId
@@ -78,17 +101,6 @@ function sendHelloMessage(recipientId, messageText) {
     message: {
       text: 'Coucou toi, ca marche bien'
     }
-  };
-
-  callSendAPI(messageData);
-}
-
-function sendTypingMessage(recipientId, messageText) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    sender_action: 'typing_on'
   };
 
   callSendAPI(messageData);
@@ -127,16 +139,13 @@ function receivedMessage(event) {
   var messageTextSwitch = message.text.toLowerCase();
   var messageAttachments = message.attachments;
 
-  
-  sendTypingMessage(senderID)
-
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageTextSwitch) {
       case /hey|hello|bonjour|salut|yo/.test(messageTextSwitch) && messageTextSwitch:
-        setTimeout(sendHelloMessage(senderID, messageTextSwitch),2000);
+        sendHelloMessage(senderID, messageTextSwitch);
         break;
 
       case 'generic':
