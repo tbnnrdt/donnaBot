@@ -91,7 +91,7 @@ function sendTypingMessage(recipientId, messageText) {
 
 function sendHelloMessage(recipientId, messageText) {
   sendTypingMessage(recipientId);
-  
+  /*
   wait(7000);
 
   var messageData = {
@@ -104,6 +104,7 @@ function sendHelloMessage(recipientId, messageText) {
   };
 
   callSendAPI(messageData);
+  */
 }
 
 function receivedPostback(event) {
@@ -144,7 +145,7 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageTextSwitch) {
-      case /hey|hello|bonjour|salut|yo/.test(messageTextSwitch) && messageTextSwitch:
+      case /hey|hello|bonjour|salut|yo|coucou/.test(messageTextSwitch) && messageTextSwitch:
         sendHelloMessage(senderID, messageTextSwitch);
         break;
 
