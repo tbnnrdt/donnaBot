@@ -68,6 +68,19 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
+function sendHelloMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: 'Coucou toi, ca marche bien'
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -81,19 +94,24 @@ function receivedMessage(event) {
   var messageId = message.mid;
 
   var messageText = message.text;
+  var messageTextSwitch = message.text.toLowerCase();
   var messageAttachments = message.attachments;
 
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    switch (messageText) {
+    switch (messageTextSwitch) {
+      case /hey|hello|bonjour|salut|yo/.test(messageTextSwitch) && messageTextSwitch:
+        sendHelloMessage(senderID, messageTextSwitch);
+        break;
+
       case 'generic':
         sendGenericMessage(senderID);
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+        sendTextMessage(senderID, messageTextSwitch);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
