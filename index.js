@@ -90,7 +90,7 @@ function sendTypingMessage(recipientId, messageText) {
 }
 
 function sendHelloMessage(recipientId, messageText) {
-  sendTypingMessage(senderID);
+  sendTypingMessage(recipientId);
   
   wait(7000);
 
