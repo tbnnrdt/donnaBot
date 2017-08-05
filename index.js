@@ -132,10 +132,10 @@ function receivedMessage(event) {
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
+  } else if (event.postback) {
+    receivedPostback(event);
   }
-} else if (event.postback) {
-  receivedPostback(event);
-}
+} 
 
 function callSendAPI(messageData) {
   request({
