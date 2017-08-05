@@ -40,7 +40,9 @@ app.post('/webhook', function (req, res) {
       entry.messaging.forEach(function(event) {
         if (event.message) {
           receivedMessage(event);
-        } else {
+        } else if (event.postback) {
+          receivedPostback(event);
+        }else {
           console.log("Webhook received unknown event: ", event);
         }
       });
@@ -127,13 +129,15 @@ function receivedMessage(event) {
         sendGenericMessage(senderID);
         break;
 
+      case 'color':
+        sendButtonMessage(senderID);
+        break;
+
       default:
         sendTextMessage(senderID, messageTextSwitch);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
-  } else if (event.postback) {
-    receivedPostback(event);
   }
 } 
 
@@ -157,6 +161,33 @@ function callSendAPI(messageData) {
       console.error(error);
     }
   });  
+}
+
+function sendButtonMessage(recipientId) {
+  var buttonData = {
+    recipient: {
+      id: recipientId
+    },
+    message:{
+    text:"Pick a color:",
+    quick_replies:[
+      {
+        content_type:"text",
+        title:"Red",
+        payload:"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+        image_url:"https://i2.tudocdn.net/img/max_width1000/id97067_1.jpg"
+      },
+      {
+        content_type:"text",
+        title:"Green",
+        payload:"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
+        image_url:"http://petersfantastichats.com/img/green.png"
+      }
+    ]
+  }
+  };  
+
+  callSendAPI(buttonData);
 }
 
 function sendGenericMessage(recipientId) {
